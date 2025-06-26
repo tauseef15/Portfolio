@@ -9,7 +9,7 @@ function Home() {
     <div className="w-full h-screen bg-black overflow-hidden relative">
       <div className="relative z-10 flex flex-col justify-between h-full">
         {/* Top-left intro text */}
-        <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[180px] sm:max-w-[220px] leading-snug text-left top-[17%] left-[10%] md:top-[20%] md:left-[15%]">
+        <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[180px] sm:max-w-[220px] leading-snug text-left top-[22%] left-[10%] md:top-[20%] md:left-[15%]">
           I’m <span className="font-semibold">Tauseef</span>, a Web Developer,
           Video Editor & Creative Technophile based in India.
         </div>
@@ -17,22 +17,22 @@ function Home() {
         {/* Center content */}
         <div className="flex-1 flex items-center justify-center relative">
           <div className="text-center px-4">
-            <h1 className="text-white font-semibold text-sm sm:text-lg whitespace-nowrap font2">
+            <h1 className="text-white font-semibold text-[8px] sm:text-lg whitespace-nowrap font2">
               LET ME INTRODUCE{" "}
-              <span className="font1 text-white text-[12vw] sm:text-[13vw] font-bold leading-none whitespace-nowrap">
+              <span className="font1 text-white text-[16vw] sm:text-[13vw] font-bold leading-none whitespace-nowrap">
                 MYSELF
               </span>
             </h1>
 
             <div className="flex flex-col justify-center items-center mt-2">
               <div className="flex flex-wrap justify-center gap-x-2 text-center">
-                <span className="text-white font-semibold text-sm sm:text-lg whitespace-nowrap font2">
+                <span className="text-white font-semibold text-[8px] sm:text-lg whitespace-nowrap font2">
                   the way I was
                 </span>
-                <span className="font1 text-white text-[8vw] sm:text-[8vw] font-bold leading-none">
+                <span className="font1 text-white text-[10vw] sm:text-[8vw] font-bold leading-none">
                   MEANT
                 </span>
-                <span className="text-white font-semibold text-sm sm:text-base whitespace-nowrap font2">
+                <span className="text-white font-semibold text-[8px] sm:text-base whitespace-nowrap font2">
                   to be
                 </span>
               </div>
