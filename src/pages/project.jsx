@@ -1,11 +1,5 @@
 import React, { useRef, useState } from "react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaJava,
-  FaGithub,
-  FaHtml5,
-} from "react-icons/fa";
+import { FaReact, FaNodeJs, FaJava, FaGithub, FaHtml5 } from "react-icons/fa";
 import {
   SiMongodb,
   SiFirebase,
@@ -23,11 +17,24 @@ function Project() {
   };
 
   const handleMouseEnter = (ref) => {
-    if (ref.current) ref.current.muted = false;
+    if (ref.current && window.innerWidth > 768) {
+      ref.current.muted = false;
+      ref.current.play();
+    }
   };
 
   const handleMouseLeave = (ref) => {
-    if (ref.current) ref.current.muted = true;
+    if (ref.current && window.innerWidth > 768) {
+      ref.current.muted = true;
+      ref.current.pause();
+    }
+  };
+
+  const handleTouch = (ref) => {
+    if (ref.current && window.innerWidth <= 768) {
+      ref.current.muted = false;
+      ref.current.play();
+    }
   };
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -112,7 +119,9 @@ function Project() {
           return (
             <div
               key={index}
-              className={`group flex-1 ${isActive ? "flex-[3]" : ""} hover:flex-[3] transition-all duration-500 relative overflow-hidden rounded-xl p-4 md:p-5 lg:p-6 bg-zinc-900 text-white`}
+              className={`group flex-1 ${
+                isActive ? "flex-[3]" : ""
+              } hover:flex-[3] transition-all duration-500 relative overflow-hidden rounded-xl p-4 md:p-5 lg:p-6 bg-zinc-900 text-white`}
               onClick={() => isMobile && toggleCard(index)}
             >
               <div className="relative h-full w-full flex flex-col justify-center items-center text-center">
@@ -157,7 +166,9 @@ function Project() {
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
                     {project.name}
                   </h3>
-                  <p className="text-sm md:text-lg mb-4">{project.description}</p>
+                  <p className="text-sm md:text-lg mb-4">
+                    {project.description}
+                  </p>
                   <div className="flex gap-4 justify-center text-sm md:text-base">
                     <a
                       href={project.live}
@@ -210,6 +221,7 @@ function Project() {
               playsInline
               onMouseEnter={() => handleMouseEnter(videoRefs.video1)}
               onMouseLeave={() => handleMouseLeave(videoRefs.video1)}
+              onTouchStart={() => handleTouch(videoRefs.video1)} // For mobile tap
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -225,6 +237,7 @@ function Project() {
                 playsInline
                 onMouseEnter={() => handleMouseEnter(videoRefs.video3)}
                 onMouseLeave={() => handleMouseLeave(videoRefs.video3)}
+                onTouchStart={() => handleTouch(videoRefs.video3)} // For mobile tap
                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -238,6 +251,7 @@ function Project() {
                 playsInline
                 onMouseEnter={() => handleMouseEnter(videoRefs.video4)}
                 onMouseLeave={() => handleMouseLeave(videoRefs.video4)}
+                onTouchStart={() => handleTouch(videoRefs.video4)} // For mobile tap
                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -253,6 +267,7 @@ function Project() {
               playsInline
               onMouseEnter={() => handleMouseEnter(videoRefs.video2)}
               onMouseLeave={() => handleMouseLeave(videoRefs.video2)}
+              onTouchStart={() => handleTouch(videoRefs.video2)} // For mobile tap
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
