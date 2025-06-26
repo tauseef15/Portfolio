@@ -14,12 +14,17 @@ function App() {
   const pos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    if (isMobile && circleRef.current) {
+      circleRef.current.style.display = "none";
+      return;
+    }
+
     const handleMouseMove = (e) => {
       mouse.current = { x: e.clientX, y: e.clientY };
     };
 
     const animate = () => {
-      // Smooth interpolation
       pos.current.x += (mouse.current.x - pos.current.x) * 0.1;
       pos.current.y += (mouse.current.y - pos.current.y) * 0.1;
 
@@ -32,16 +37,16 @@ function App() {
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-    animate(); // Start loop
+    animate();
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
-  // Grow on click
   useEffect(() => {
-    const handleMouseDown = () => circleRef.current?.classList.add("scale-150");
+    const handleMouseDown = () =>
+      circleRef.current?.classList.add("scale-150");
     const handleMouseUp = () =>
       circleRef.current?.classList.remove("scale-150");
 
@@ -54,25 +59,36 @@ function App() {
     };
   }, []);
 
-  // Change color on hovering links
   useEffect(() => {
-    const handleMouseOver = (e) => {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    const handleHoverIn = (e) => {
       if (e.target.closest("a")) {
         circleRef.current?.classList.add("bg-red-500");
       }
     };
-    const handleMouseOut = (e) => {
+    const handleHoverOut = (e) => {
       if (e.target.closest("a")) {
         circleRef.current?.classList.remove("bg-red-500");
       }
     };
 
-    document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseout", handleMouseOut);
+    if (!isMobile) {
+      document.addEventListener("mouseover", handleHoverIn);
+      document.addEventListener("mouseout", handleHoverOut);
+    } else {
+      document.addEventListener("touchstart", handleHoverIn);
+      document.addEventListener("touchend", handleHoverOut);
+    }
 
     return () => {
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
+      if (!isMobile) {
+        document.removeEventListener("mouseover", handleHoverIn);
+        document.removeEventListener("mouseout", handleHoverOut);
+      } else {
+        document.removeEventListener("touchstart", handleHoverIn);
+        document.removeEventListener("touchend", handleHoverOut);
+      }
     };
   }, []);
 

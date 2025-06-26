@@ -7,9 +7,8 @@ import Orb from "../components/orbElement";
 function Home() {
   return (
     <div className="w-full h-screen bg-black overflow-hidden relative">
-
       <div className="relative z-10 flex flex-col justify-between h-full">
-        {/* Top-left intro text with LENS */}
+        {/* Top-left intro text */}
         <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[180px] sm:max-w-[220px] leading-snug text-left top-[25%] left-[15%] md:top-[20%] md:left-[15%]">
           I’m <span className="font-semibold">Tauseef</span>, a Web Developer,
           Video Editor & Creative Technophile based in India.
@@ -38,7 +37,7 @@ function Home() {
                 </span>
               </div>
 
-              {/* Bottom-right tagline with LENS */}
+              {/* Bottom-right tagline */}
               <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[30%] right-[15%] md:bottom-[30%] md:right-[20%]">
                 Blending logic with design to craft seamless websites and
                 compelling visuals.
@@ -49,13 +48,13 @@ function Home() {
           </div>
         </div>
 
-        {/* Social icons */}
+        {/* Social Icons (triggers hover effect via <a>) */}
         <div className="flex justify-end me-8 gap-6 pb-8">
           <a
             href="https://www.linkedin.com/in/tauseef-shaikh-4b690b2a0/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
+            className="hover:scale-110 transition-transform cursor-pointer"
           >
             <FaLinkedin className="text-xl sm:text-2xl text-white" />
           </a>
@@ -63,7 +62,7 @@ function Home() {
             href="https://www.instagram.com/hey.wayne_/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
+            className="hover:scale-110 transition-transform cursor-pointer"
           >
             <FaInstagram className="text-xl sm:text-2xl text-white" />
           </a>
@@ -71,7 +70,7 @@ function Home() {
             href="https://github.com/tauseef15"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
+            className="hover:scale-110 transition-transform cursor-pointer"
           >
             <FaGithub className="text-xl sm:text-2xl text-white" />
           </a>
