@@ -38,7 +38,7 @@ function Home() {
               </div>
 
               {/* Bottom-right tagline */}
-              <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[30%] right-[15%] md:bottom-[30%] md:right-[20%]">
+              <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[35%] right-[15%] md:bottom-[30%] md:right-[20%]">
                 Blending logic with design to craft seamless websites and
                 compelling visuals.
               </div>
