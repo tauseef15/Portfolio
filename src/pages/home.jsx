@@ -9,7 +9,7 @@ function Home() {
     <div className="w-full h-screen bg-black overflow-hidden relative">
       <div className="relative z-10 flex flex-col justify-between h-full">
         {/* Top-left intro text */}
-        <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[180px] sm:max-w-[220px] leading-snug text-left top-[25%] left-[15%] md:top-[20%] md:left-[15%]">
+        <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[180px] sm:max-w-[220px] leading-snug text-left top-[17%] left-[10%] md:top-[20%] md:left-[15%]">
           I’m <span className="font-semibold">Tauseef</span>, a Web Developer,
           Video Editor & Creative Technophile based in India.
         </div>
@@ -38,18 +38,13 @@ function Home() {
               </div>
 
               {/* Bottom-right tagline */}
-              <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[35%] right-[15%] md:bottom-[30%] md:right-[20%]">
+              <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[25%] right-[10%] md:bottom-[30%] md:right-[20%]">
                 Blending logic with design to craft seamless websites and
                 compelling visuals.
-
-                {/* ArrowCircle below the text only on extra small screens */}
-                <div className="block sm:hidden mt-4">
-                  <ArrowCircle />
-                </div>
               </div>
 
               {/* Original ArrowCircle shown only on sm and up */}
-              <div className="hidden sm:block mt-4">
+              <div className=" mt-4">
                 <ArrowCircle />
               </div>
             </div>
