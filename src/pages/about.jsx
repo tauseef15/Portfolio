@@ -3,7 +3,7 @@ import TextPressure from "../tools/textPressure";
 import FallingText from "../tools/FallingText";
 import { AiOutlineWarning } from "react-icons/ai";
 import { FaLongArrowAltUp } from "react-icons/fa";
-
+import RotatingText from "../tools/rotatingText";
 const rotatingWords = [
   "developer.",
   "editor.",
@@ -19,12 +19,12 @@ function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const ref = useRef();
-
+  const [showHelloMessage, setShowHelloMessage] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [showText, setShowText] = useState(false);
-
+  const [fallingTextKey, setFallingTextKey] = useState(0);
   useEffect(() => {
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     setIsTouchDevice(hasTouch);
   }, []);
 
@@ -119,34 +119,44 @@ function About() {
             "<span style={{ color: "#686868" }}>Engineer</span> by logic,{" "}
             <span style={{ color: "#686868" }}>artist</span> by instinct"
           </p>
-
           {/* Rotating Words */}
-          <div className="flex flex-col items-start h-14 sm:h-20 overflow-hidden my-4 sm:my-10">
+          <div className="flex flex-col items-start h-14 sm:h-22 overflow-hidden my-4 sm:my-10">
             <p className="text-base sm:text-xl md:text-3xl text-left">
-              <span className="opacity-70">Hellooo!! I am Tauseef Shaikh, a</span>
-              <span className="relative h-10 sm:h-12 w-full uppercase font-semibold overflow-hidden block">
-                <span
-                  className="absolute left-0 transition-transform duration-500 ease-in-out"
-                  style={{
-                    transform: `translateY(-${currentIndex * 2.5}rem)`,
-                  }}
-                >
-                  {rotatingWords.map((word, i) => (
-                    <div
-                      className="h-10 sm:h-12 text-2xl sm:text-4xl flex items-center justify-start text-left"
-                      key={i}
-                    >
-                      {word}
-                    </div>
-                  ))}
-                </span>
+              <span className="opacity-70">
+                Hellooo!! I am Tauseef Shaikh, a
               </span>
             </p>
+            <RotatingText
+              texts={[
+                "developer.",
+                "editor.",
+                "creative mind.",
+                "designer.",
+                "problem solver.",
+                "storyteller.",
+                "visionary.",
+                "tech enthusiast.",
+              ]}
+              mainClassName="px-2 sm:px-2 md:px-3 bg-[#686868] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl justify-center rounded-md uppercase font-bold"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+            />
           </div>
 
           {/* FallingText Paragraph */}
-          <div className="w-full sm:w-11/12 text-xs sm:text-base md:text-2xl font-medium border-1 rounded-2xl border-white">
+          <div
+            className="w-full text-xs sm:text-base md:text-2xl font-medium border-1 rounded-2xl border-white"
+            onClick={() => setShowHelloMessage(true)}
+            onTouchStart={() => setShowHelloMessage(true)}
+          >
             <FallingText
+              key={fallingTextKey}
               text="A Web Developer, Video Editor, and Creative Technophile with a B.Sc. in IT. Passionate about building responsive, user-friendly websites and crafting engaging visual content. Blending logic with creativity, every project is driven by purpose, precision, and a love for digital storytelling."
               highlightedWords={[
                 "Web",
@@ -163,7 +173,19 @@ function About() {
               mouseConstraintStiffness={0.9}
             />
           </div>
-
+          {showHelloMessage && (
+            <div className="w-full flex justify-center mt-4">
+              <div
+                onClick={() => {
+                  setFallingTextKey((prev) => prev + 1); // reset FallingText
+                  setShowHelloMessage(false); // hide message
+                }}
+                className="text-xs sm:text-lg text-red-600 font-medium cursor-pointer hover:underline transition text-center"
+              >
+                Warned you not to touch! (Tap to reset)
+              </div>
+            </div>
+          )}
           {/* Scrolling Warning */}
           <div className="scroller w-full overflow-hidden whitespace-nowrap mt-10">
             <div className="scroller-inner inline-flex items-center animate-scroll">
@@ -175,7 +197,8 @@ function About() {
                         style={{ color: "#686868" }}
                         className="flex items-center text text-xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl mx-2 sm:mx-4 whitespace-nowrap"
                       >
-                        W<AiOutlineWarning />RNING !!! DON'T TOUCH
+                        W<AiOutlineWarning />
+                        RNING !!! DON'T TOUCH
                       </h1>
                       <span
                         style={{ color: "#686868" }}
