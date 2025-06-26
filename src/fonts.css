@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "BirdsOfParadise";
+  src: url("./assets/Fonts/BirdsOfParadise.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Caooli";
+  src: url("./assets/Fonts/Caooli.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/Fonts/CocogooseProRegular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PolaroidScript";
+  src: url("./assets/Fonts/PolaroidScript.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SwinglyLours";
+  src: url("./assets/Fonts/SwinglyLours.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tempting";
+  src: url("./assets/Fonts/Tempting.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "VirgoDelight";
+  src: url("./assets/Fonts/VirgoDelight.ttf") format("truetype");
+}
