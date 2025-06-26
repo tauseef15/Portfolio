@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   FaReact,
   FaNodeJs,
   FaJava,
   FaGithub,
   FaHtml5,
-  FaCss3Alt,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -20,7 +19,7 @@ function Project() {
     video1: useRef(null),
     video2: useRef(null),
     video3: useRef(null),
-    video4: useRef(null), // cloudinary video
+    video4: useRef(null),
   };
 
   const handleMouseEnter = (ref) => {
@@ -29,6 +28,13 @@ function Project() {
 
   const handleMouseLeave = (ref) => {
     if (ref.current) ref.current.muted = true;
+  };
+
+  const [activeIndex, setActiveIndex] = useState(null);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  const toggleCard = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   const projects = [
@@ -101,63 +107,85 @@ function Project() {
 
       {/* Project Cards */}
       <div className="flex flex-col gap-4 h-[600px] w-full mt-22 md:mt-32">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="group flex-1 hover:flex-[3] transition-all duration-500 relative overflow-hidden rounded-xl p-4 md:p-5 lg:p-6 bg-zinc-900 text-white"
-          >
-            <div className="relative h-full w-full flex flex-col justify-center items-center text-center">
-              {/* Default */}
-              <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 md:gap-8 group-hover:opacity-0 group-hover:-translate-y-4 transition-all duration-500">
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">
-                  {project.name}
-                </h2>
-                <div className="flex flex-wrap gap-2 md:gap-3 justify-center mt-2 md:mt-3 text-xs md:text-sm text-white">
-                  {project.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="flex items-center gap-1 bg-zinc-800 px-2 py-1 rounded-full border border-transparent group-hover:border-[#686868] transition"
-                    >
-                      <span className="text-base">{tech.icon}</span>
-                      <span>{tech.name}</span>
-                    </span>
-                  ))}
+        {projects.map((project, index) => {
+          const isActive = activeIndex === index;
+          return (
+            <div
+              key={index}
+              className={`group flex-1 ${isActive ? "flex-[3]" : ""} hover:flex-[3] transition-all duration-500 relative overflow-hidden rounded-xl p-4 md:p-5 lg:p-6 bg-zinc-900 text-white`}
+              onClick={() => isMobile && toggleCard(index)}
+            >
+              <div className="relative h-full w-full flex flex-col justify-center items-center text-center">
+                {/* Default */}
+                <div
+                  className={`absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 md:gap-8
+                    ${
+                      isMobile
+                        ? isActive
+                          ? "opacity-0 -translate-y-4"
+                          : "opacity-100 translate-y-0"
+                        : "group-hover:opacity-0 group-hover:-translate-y-4"
+                    }
+                    transition-all duration-500`}
+                >
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">
+                    {project.name}
+                  </h2>
+                  <div className="flex flex-wrap gap-1 md:gap-3 justify-center mt-2 md:mt-3 text-[10px] md:text-sm text-white">
+                    {project.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="flex items-center gap-1 bg-zinc-800 px-2 py-1 rounded-full border border-transparent group-hover:border-[#686868] transition"
+                      >
+                        <span className="text-base">{tech.icon}</span>
+                        <span>{tech.name}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Hover */}
-              <div className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
-                  {project.name}
-                </h3>
-                <p className="text-sm md:text-lg mb-4">{project.description}</p>
-                <div className="flex gap-4 justify-center text-sm md:text-base">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-[#686868] rounded hover:bg-[#5c5c5c] transition"
-                  >
-                    View Live
-                  </a>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 border border-[#686868] rounded hover:bg-[#686868] hover:text-black transition"
-                  >
-                    GitHub
-                  </a>
+                {/* Hover or Tap View */}
+                <div
+                  className={`${
+                    isMobile
+                      ? isActive
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
+                      : "group-hover:opacity-100 group-hover:translate-y-0 opacity-0 translate-y-4"
+                  } transition-all duration-500`}
+                >
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm md:text-lg mb-4">{project.description}</p>
+                  <div className="flex gap-4 justify-center text-sm md:text-base">
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-[#686868] rounded hover:bg-[#5c5c5c] transition"
+                    >
+                      View Live
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border border-[#686868] rounded hover:bg-[#686868] hover:text-black transition"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {/* Videos Section */}
+      {/* Video Section */}
       <div className="flex flex-col md:flex-row justify-center items-start gap-4 px-4 mt-10">
-        {/* Small screen top */}
+        {/* Small screen video */}
         <div className="md:hidden w-full h-[200px] sm:h-[240px] overflow-hidden">
           <video
             ref={videoRefs.video3}
@@ -170,9 +198,8 @@ function Project() {
           />
         </div>
 
-        {/* Main Row */}
+        {/* Desktop Row */}
         <div className="flex flex-row justify-center items-start gap-4 w-full">
-          {/* Left Portrait */}
           <div className="w-fit sm:w-[100px] md:w-fit h-[240px] md:h-[640px] lg:h-[840px] overflow-hidden">
             <video
               ref={videoRefs.video1}
@@ -187,7 +214,6 @@ function Project() {
             />
           </div>
 
-          {/* Middle Landscape */}
           <div className="hidden md:flex flex-col gap-4 w-full md:w-[60%] max-w-[720px]">
             <div className="w-full h-[320px] lg:h-[420px] overflow-hidden">
               <video
@@ -217,7 +243,6 @@ function Project() {
             </div>
           </div>
 
-          {/* Right Portrait */}
           <div className="w-fit sm:w-[100px] md:w-fit h-[240px] md:h-[640px] lg:h-[840px] overflow-hidden">
             <video
               ref={videoRefs.video2}
@@ -247,7 +272,7 @@ function Project() {
         </div>
       </div>
 
-      {/* Footer note */}
+      {/* Footer */}
       <span className="mt-7">
         Visit the{" "}
         <a

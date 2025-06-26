@@ -43,32 +43,52 @@ const TextPressure = ({
   };
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      cursorRef.current.x = e.clientX;
-      cursorRef.current.y = e.clientY;
-    };
-    const handleTouchMove = (e) => {
-      const t = e.touches[0];
-      cursorRef.current.x = t.clientX;
-      cursorRef.current.y = t.clientY;
-    };
+  const isTouching = { current: false };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+  const handleMouseMove = (e) => {
+    cursorRef.current.x = e.clientX;
+    cursorRef.current.y = e.clientY;
+  };
 
-    if (containerRef.current) {
-      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-      mouseRef.current.x = left + width / 2;
-      mouseRef.current.y = top + height / 2;
-      cursorRef.current.x = mouseRef.current.x;
-      cursorRef.current.y = mouseRef.current.y;
-    }
+  const handleTouchStart = (e) => {
+    isTouching.current = true;
+    const t = e.touches[0];
+    cursorRef.current.x = t.clientX;
+    cursorRef.current.y = t.clientY;
+  };
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, []);
+  const handleTouchMove = (e) => {
+    if (!isTouching.current) return;
+    const t = e.touches[0];
+    cursorRef.current.x = t.clientX;
+    cursorRef.current.y = t.clientY;
+  };
+
+  const handleTouchEnd = () => {
+    isTouching.current = false;
+  };
+
+  window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('touchstart', handleTouchStart, { passive: true });
+  window.addEventListener('touchmove', handleTouchMove, { passive: false });
+  window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+  if (containerRef.current) {
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    mouseRef.current.x = left + width / 2;
+    mouseRef.current.y = top + height / 2;
+    cursorRef.current.x = mouseRef.current.x;
+    cursorRef.current.y = mouseRef.current.y;
+  }
+
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('touchstart', handleTouchStart);
+    window.removeEventListener('touchmove', handleTouchMove);
+    window.removeEventListener('touchend', handleTouchEnd);
+  };
+}, []);
+
 
   const setSize = () => {
     if (!containerRef.current || !titleRef.current) return;
