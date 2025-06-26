@@ -15,7 +15,7 @@ function Home() {
         </div>
 
         {/* Center content */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center relative">
           <div className="text-center px-4">
             <h1 className="text-white font-semibold text-sm sm:text-lg whitespace-nowrap font2">
               LET ME INTRODUCE{" "}
@@ -37,17 +37,24 @@ function Home() {
                 </span>
               </div>
 
-              {/* Bottom-right tagline */}
-              <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[25%] right-[10%] md:bottom-[30%] md:right-[20%]">
-                Blending logic with design to craft seamless websites and
-                compelling visuals.
-              </div>
-
-              {/* Original ArrowCircle shown only on sm and up */}
-              <div className=" mt-4">
+              {/* ArrowCircle for medium and up */}
+              <div className="mt-4 hidden sm:block">
                 <ArrowCircle />
               </div>
             </div>
+          </div>
+
+          {/* Bottom-right tagline (all screens) */}
+          <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[25%] right-[10%] md:bottom-[30%] md:right-[20%]">
+            <span>
+              Blending logic with design to craft seamless websites and
+              compelling visuals.
+            </span>
+          </div>
+
+          {/* Horizontally centered ArrowCircle for small screens only */}
+          <div className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 block sm:hidden">
+            <ArrowCircle />
           </div>
         </div>
 
