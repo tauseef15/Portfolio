@@ -41,14 +41,22 @@ function Home() {
               <div className="absolute text-white text-[12px] sm:text-xs md:text-sm max-w-[200px] sm:max-w-[240px] leading-snug text-right bottom-[35%] right-[15%] md:bottom-[30%] md:right-[20%]">
                 Blending logic with design to craft seamless websites and
                 compelling visuals.
+
+                {/* ArrowCircle below the text only on extra small screens */}
+                <div className="block sm:hidden mt-4">
+                  <ArrowCircle />
+                </div>
               </div>
 
-              <ArrowCircle />
+              {/* Original ArrowCircle shown only on sm and up */}
+              <div className="hidden sm:block mt-4">
+                <ArrowCircle />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Social Icons (triggers hover effect via <a>) */}
+        {/* Social Icons */}
         <div className="flex justify-end me-8 gap-6 pb-8">
           <a
             href="https://www.linkedin.com/in/tauseef-shaikh-4b690b2a0/"
