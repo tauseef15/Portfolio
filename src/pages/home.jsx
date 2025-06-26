@@ -52,7 +52,7 @@ function Home() {
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-end me-8 gap-6 pb-8">
+        <div className="flex justify-end me-8 gap-6 pb-20 sm:pb-8 ">
           <a
             href="https://www.linkedin.com/in/tauseef-shaikh-4b690b2a0/"
             target="_blank"
