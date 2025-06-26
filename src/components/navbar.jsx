@@ -34,9 +34,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-6 lg:px-10 py-3 z-50 bg-transparent">
+    <div className="fixed top-0 left-0 w-full flex items-center justify-between px-2 sm:px-4 md:px-6 py-2 sm:py-3 z-50 bg-transparent">
       {/* Logo */}
-      <div className="text-white italic font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap flex items-center gap-1">
+      <div className="text-white italic font-bold text-xs sm:text-sm md:text-base lg:text-xl whitespace-nowrap flex items-center gap-1">
         hey.tauseef
         <span
           ref={handRef}
@@ -48,30 +48,30 @@ const Navbar = () => {
       </div>
 
       {/* Nav Buttons */}
-      <div className="flex items-center bg-[#1f1f1f] border border-[#3a3a3a] shadow-md px-1 py-2 rounded-md overflow-x-auto scrollbar-hide max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-none">
+      <div className="flex items-center bg-[#1f1f1f] border border-[#3a3a3a] shadow-md px-1 py-1 sm:py-2 rounded-md overflow-x-auto scrollbar-hide max-w-[85%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-none">
         <a
           href="#home"
-          className="min-w-[44px] px-4 sm:px-6 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-sm rounded-md transition"
+          className="min-w-[40px] px-3 sm:px-4 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-xs sm:text-sm rounded-md transition"
         >
-          <FaHome className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]" />
+          <FaHome className="text-[14px] sm:text-[16px] md:text-[18px]" />
         </a>
         <a
           href="#about"
-          className="min-w-[44px] px-4 sm:px-6 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-sm rounded-md transition"
+          className="min-w-[40px] px-3 sm:px-4 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-xs sm:text-sm rounded-md transition"
         >
-          <FaLightbulb className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]" />
+          <FaLightbulb className="text-[14px] sm:text-[16px] md:text-[18px]" />
         </a>
         <a
           href="#projects"
-          className="min-w-[44px] px-4 sm:px-6 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-sm rounded-md transition"
+          className="min-w-[40px] px-3 sm:px-4 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-xs sm:text-sm rounded-md transition"
         >
-          <FaProjectDiagram className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]" />
+          <FaProjectDiagram className="text-[14px] sm:text-[16px] md:text-[18px]" />
         </a>
         <a
           href="#contact"
-          className="min-w-[44px] px-4 sm:px-6 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-sm rounded-md transition"
+          className="min-w-[40px] px-3 sm:px-4 py-2 flex items-center justify-center mx-1 bg-[#2c2c2c] hover:bg-[#3a3a3a] text-white text-xs sm:text-sm rounded-md transition"
         >
-          <FaUser className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]" />
+          <FaUser className="text-[14px] sm:text-[16px] md:text-[18px]" />
         </a>
       </div>
     </div>
