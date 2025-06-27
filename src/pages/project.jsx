@@ -18,15 +18,13 @@ function Project() {
 
   const handleMouseEnter = (ref) => {
     if (ref.current && window.innerWidth > 768) {
-      ref.current.muted = false;
-      ref.current.play();
+      ref.current.muted = false; // just unmute
     }
   };
 
   const handleMouseLeave = (ref) => {
     if (ref.current && window.innerWidth > 768) {
-      ref.current.muted = true;
-      ref.current.pause();
+      ref.current.muted = true; // just mute
     }
   };
 
@@ -196,7 +194,7 @@ function Project() {
 
       {/* Video Section */}
       <div className="flex flex-col md:flex-row justify-center items-start gap-4 px-4 mt-10">
-        {/* Small screen video */}
+        {/* Mobile Video */}
         <div className="md:hidden w-full h-[200px] sm:h-[240px] overflow-hidden">
           <video
             ref={videoRefs.video3}
@@ -221,7 +219,7 @@ function Project() {
               playsInline
               onMouseEnter={() => handleMouseEnter(videoRefs.video1)}
               onMouseLeave={() => handleMouseLeave(videoRefs.video1)}
-              onTouchStart={() => handleTouch(videoRefs.video1)} // For mobile tap
+              onTouchStart={() => handleTouch(videoRefs.video1)}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -237,7 +235,7 @@ function Project() {
                 playsInline
                 onMouseEnter={() => handleMouseEnter(videoRefs.video3)}
                 onMouseLeave={() => handleMouseLeave(videoRefs.video3)}
-                onTouchStart={() => handleTouch(videoRefs.video3)} // For mobile tap
+                onTouchStart={() => handleTouch(videoRefs.video3)}
                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -251,7 +249,7 @@ function Project() {
                 playsInline
                 onMouseEnter={() => handleMouseEnter(videoRefs.video4)}
                 onMouseLeave={() => handleMouseLeave(videoRefs.video4)}
-                onTouchStart={() => handleTouch(videoRefs.video4)} // For mobile tap
+                onTouchStart={() => handleTouch(videoRefs.video4)}
                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -267,13 +265,13 @@ function Project() {
               playsInline
               onMouseEnter={() => handleMouseEnter(videoRefs.video2)}
               onMouseLeave={() => handleMouseLeave(videoRefs.video2)}
-              onTouchStart={() => handleTouch(videoRefs.video2)} // For mobile tap
+              onTouchStart={() => handleTouch(videoRefs.video2)}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>
 
-        {/* Small screen bottom */}
+        {/* Mobile Bottom Video */}
         <div className="md:hidden mt-4 w-full h-[200px] sm:h-[240px] overflow-hidden">
           <video
             ref={videoRefs.video4}
@@ -288,7 +286,7 @@ function Project() {
       </div>
 
       {/* Footer */}
-      <span className="mt-7">
+      <span className="mt-7 text-sm">
         Visit the{" "}
         <a
           href="https://www.instagram.com/hey.wayne_/"
