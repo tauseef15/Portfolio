@@ -30,7 +30,7 @@ function Project() {
 
   const handleTouch = (ref) => {
     if (ref.current && window.innerWidth <= 768) {
-      ref.current.muted = false;
+      ref.current.muted = !ref.current.muted;
       ref.current.play();
     }
   };
