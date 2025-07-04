@@ -52,7 +52,7 @@ function Project() {
         { name: "Firebase", icon: <SiFirebase /> },
         { name: "Tailwind", icon: <SiTailwindcss /> },
       ],
-      live: "#",
+      live: "https://tauseef15.github.io/under-construction/",
       github: "#",
     },
     {
@@ -65,7 +65,7 @@ function Project() {
         { name: "MongoDB", icon: <SiMongodb /> },
         { name: "Express", icon: <SiExpress /> },
       ],
-      live: "#",
+      live: "https://souled-store-snowy.vercel.app/",
       github: "https://github.com/tauseef15/SouledStore",
     },
     {
@@ -78,7 +78,7 @@ function Project() {
         { name: "MongoDB", icon: <SiMongodb /> },
         { name: "EJS", icon: <FaHtml5 /> },
       ],
-      live: "#",
+      live: "https://shareme-w3f5.onrender.com/",
       github: "https://github.com/tauseef15/ShareMe",
     },
     {
