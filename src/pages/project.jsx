@@ -44,17 +44,19 @@ function Project() {
 
   const projects = [
     {
-      name: "HIVE",
-      description:
-        "HIVE is a developer-centric social media platform inspired by Instagram, tailored specifically for coders.",
-      techStack: [
-        { name: "React", icon: <FaReact /> },
-        { name: "Firebase", icon: <SiFirebase /> },
-        { name: "Tailwind", icon: <SiTailwindcss /> },
-      ],
-      live: "https://tauseef15.github.io/under-construction/",
-      github: "#",
-    },
+  name: "EduTrack",
+  description:
+    "EduTrack is a classroom management system designed for teachers and students to seamlessly manage tests, announcements, results, and learning progress in a digital environment.",
+  techStack: [
+    { name: "React", icon: <FaReact /> },
+    { name: "Node.js", icon: <FaNodeJs /> },
+    { name: "Express", icon: <SiExpress /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
+    { name: "Tailwind", icon: <SiTailwindcss /> },
+  ],
+  live: "https://edutrack-three-weld.vercel.app/",
+  github: "https://github.com/tauseef15/EduTrack",
+},
     {
       name: "Souled Store",
       description:
